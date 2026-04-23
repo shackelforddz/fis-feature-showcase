@@ -73,7 +73,7 @@ export function BrowsePanel({ screens }: Props) {
           className="relative"
           style={{
             aspectRatio: `${CARD_RATIO_W} / ${CARD_RATIO_H}`,
-            width: "60cqw",
+            width: "65cqw",
           }}
         >
           {backScreen && <BackCard key={backScreen.id} screen={backScreen} />}
@@ -89,7 +89,7 @@ export function BrowsePanel({ screens }: Props) {
           </AnimatePresence>
 
           <AnimatePresence mode="wait">
-            {topScreen && !isDragging && (
+            {topScreen && (
               <motion.div
                 key={topScreen.id}
                 initial={{
@@ -97,16 +97,24 @@ export function BrowsePanel({ screens }: Props) {
                   x: topScreen.annotation.side === "left" ? -16 : 16,
                   scale: 0.98,
                 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
+                animate={{
+                  opacity: isDragging ? 0 : 1,
+                  x: 0,
+                  scale: 1,
+                }}
                 exit={{
                   opacity: 0,
                   x: topScreen.annotation.side === "left" ? -8 : 8,
                   scale: 0.98,
+                  transition: { duration: 0.35, ease: "easeOut" },
                 }}
                 transition={{
-                  duration: 0.28,
-                  ease: [0.2, 0.8, 0.2, 1],
-                  delay: 0.5,
+                  default: {
+                    duration: 0.28,
+                    ease: [0.2, 0.8, 0.2, 1],
+                    delay: 0.5,
+                  },
+                  opacity: { duration: 0.35, ease: "easeOut" },
                 }}
                 className="pointer-events-none absolute z-[25] w-[29%] max-w-[459px]"
                 style={{
