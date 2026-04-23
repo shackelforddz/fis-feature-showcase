@@ -13,6 +13,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { FeatureScreen } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { ScribbleHeading } from "./scribble-heading";
+import { MeshGradientBg } from "./mesh-gradient-bg";
 
 type Props = {
   screens: FeatureScreen[];
@@ -20,8 +21,8 @@ type Props = {
 
 const SWIPE_DISTANCE = 160;
 const SWIPE_VELOCITY = 500;
-const CARD_RATIO_W = 1571;
-const CARD_RATIO_H = 1117;
+const CARD_RATIO_W = 1440;
+const CARD_RATIO_H = 1024;
 
 type ExitSide = "left" | "right";
 type TransitionMode = "swipe" | "fade";
@@ -58,7 +59,8 @@ export function BrowsePanel({ screens }: Props) {
   const custom: CardCustom = { side: exitSide, mode };
 
   return (
-    <section className="relative flex-[3] min-w-0 h-full rounded-4xl bg-panel/80 backdrop-blur-xl overflow-hidden p-6">
+    <section className="relative flex-[3] min-w-0 h-full rounded-4xl bg-panel backdrop-blur-xl overflow-hidden p-6">
+      <MeshGradientBg className="absolute inset-0 z-0" />
       <div className="absolute left-[35px] top-6 z-30">
         <ScribbleHeading rotate={-3.13}>2. Browse the features</ScribbleHeading>
       </div>
@@ -167,6 +169,33 @@ function StackButton({
   );
 }
 
+function ScreenMedia({ src }: { src: string }) {
+  if (/\.(mp4|webm|mov)$/i.test(src)) {
+    return (
+      <video
+        src={src}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 h-full w-full object-cover pointer-events-none select-none"
+      />
+    );
+  }
+  return (
+    <Image
+      src={src}
+      alt=""
+      fill
+      sizes="(min-width: 1024px) 60vw, 100vw"
+      className="object-cover pointer-events-none select-none"
+      priority
+      draggable={false}
+    />
+  );
+}
+
 function BackCard({ screen }: { screen: FeatureScreen }) {
   return (
     <motion.div
@@ -176,13 +205,7 @@ function BackCard({ screen }: { screen: FeatureScreen }) {
       style={{ zIndex: 10, transformOrigin: "center center" }}
       className="absolute inset-0 rounded-[14px] overflow-hidden bg-black/40 shadow-2xl pointer-events-none"
     >
-      <Image
-        src={screen.image}
-        alt=""
-        fill
-        sizes="(min-width: 1024px) 60vw, 100vw"
-        className="object-cover"
-      />
+      <ScreenMedia src={screen.image} />
     </motion.div>
   );
 }
@@ -273,15 +296,7 @@ function TopCard({
           opacity: shadowOpacity,
         }}
       />
-      <Image
-        src={screen.image}
-        alt=""
-        fill
-        sizes="(min-width: 1024px) 60vw, 100vw"
-        className="object-cover pointer-events-none select-none"
-        priority
-        draggable={false}
-      />
+      <ScreenMedia src={screen.image} />
     </motion.div>
   );
 }

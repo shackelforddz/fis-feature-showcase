@@ -16,7 +16,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "pi-2",
-      image: placeholder,
+      image: "/test.mp4",
       annotation: {
         title: "Prospect Scoring",
         body: "See a propensity score surfaced next to each borrower so reps can prioritize the right conversations first.",
