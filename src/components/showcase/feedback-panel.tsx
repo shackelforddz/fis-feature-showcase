@@ -13,10 +13,10 @@ type Props = {
 
 export function FeedbackPanel({ category, items, onAddClick }: Props) {
   return (
-    <section className="shrink-0 w-[940px] h-full rounded-4xl bg-panel/80 backdrop-blur-xl p-12 flex flex-col gap-4">
+    <section className="flex-1 min-w-0 h-full rounded-4xl bg-panel/80 backdrop-blur-xl p-12 flex flex-col gap-4">
       <div className="flex flex-col gap-4 flex-1 min-h-0">
         <ScribbleHeading rotate={-2.72}>3. Leave feedback</ScribbleHeading>
-        <p className="text-[48px] leading-[48px] font-medium text-muted-foreground">
+        <p className="text-[1.25vw] leading-[1.25vw] font-medium text-muted-foreground">
           {category.prompt}
         </p>
         <div className="flex-1 min-h-0 overflow-hidden">
@@ -26,7 +26,7 @@ export function FeedbackPanel({ category, items, onAddClick }: Props) {
       <Button
         type="button"
         onClick={onAddClick}
-        className="h-[108px] w-full rounded-full bg-brand text-brand-foreground text-[42px] font-medium hover:bg-brand/90"
+        className="h-[108px] w-full rounded-full bg-brand text-brand-foreground text-[1.1vw] font-medium hover:bg-brand/90"
       >
         Add {category.shortLabel} Feedback
       </Button>

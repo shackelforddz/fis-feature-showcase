@@ -14,7 +14,7 @@ export function CategoryBar({ categories, selectedId, onSelect }: Props) {
   return (
     <section className="shrink-0 rounded-4xl bg-panel/80 backdrop-blur-xl p-12 flex flex-col gap-6">
       <ScribbleHeading rotate={-2.23}>1. Select a category</ScribbleHeading>
-      <div className="flex gap-12 h-[304px] items-center">
+      <div className="flex gap-12 items-center">
         {categories.map((category) => {
           const isActive = category.id === selectedId;
           return (
@@ -33,19 +33,19 @@ export function CategoryBar({ categories, selectedId, onSelect }: Props) {
             >
               <span
                 className={cn(
-                  "shrink-0 size-[160px] flex items-center justify-center text-[96px] font-medium leading-none",
+                  "shrink-0 w-[5vw] flex items-center justify-center text-[2.5vw] font-medium leading-none",
                   isActive ? "text-background" : "text-foreground"
                 )}
               >
                 {category.number}
               </span>
               <span className="flex-1 min-w-0 flex flex-col gap-2">
-                <span className="text-[48px] font-medium leading-[48px]">
+                <span className="text-[1.25vw] font-medium leading-[1.25vw]">
                   {category.name}
                 </span>
                 <span
                   className={cn(
-                    "text-[36px] leading-[40px]",
+                    "text-[0.94vw] leading-[1.04vw]",
                     isActive ? "text-background/60" : "text-muted-foreground"
                   )}
                 >

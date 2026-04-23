@@ -6,7 +6,6 @@ export const riskQuestions: WizardQuestion[] = [
     type: "textarea",
     prompt:
       "How would you describe your approach to evaluating an existing loan today?",
-    goesToBoard: true,
   },
   {
     id: "oneWord",
@@ -14,7 +13,6 @@ export const riskQuestions: WizardQuestion[] = [
     prompt:
       "What is one word you would use to describe what proactive risk mitigation offers?",
     placeholder: "One word",
-    goesToBoard: true,
   },
   {
     id: "disappointment",

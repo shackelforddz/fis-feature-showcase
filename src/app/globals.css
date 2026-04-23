@@ -137,5 +137,8 @@
   }
   html {
     @apply font-sans;
+    /* 1rem == 8px at a 1920px viewport (half of the design baseline) so all
+       rem-based text scales fluidly with vw at 50% of the design size. */
+    font-size: calc(100vw / 240);
   }
 }

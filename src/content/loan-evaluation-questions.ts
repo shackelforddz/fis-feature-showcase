@@ -6,7 +6,6 @@ export const loanEvaluationQuestions: WizardQuestion[] = [
     type: "textarea",
     prompt:
       "How would you describe your approach to getting to a credit decision today?",
-    goesToBoard: true,
   },
   {
     id: "oneWord",
@@ -14,7 +13,6 @@ export const loanEvaluationQuestions: WizardQuestion[] = [
     prompt:
       "What is one word you would use to describe what proactive loan evaluation center offers?",
     placeholder: "One word",
-    goesToBoard: true,
   },
   {
     id: "disappointment",

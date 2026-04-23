@@ -23,8 +23,8 @@ export function FeedbackWall({ items }: Props) {
             transition={{ type: "spring", stiffness: 140, damping: 16 }}
             className="aspect-square bg-sticky text-sticky-foreground p-6 shadow-2xl font-handwritten flex flex-col gap-4"
           >
-            <p className="text-[24px] leading-tight">&ldquo;{item.quote}&rdquo;</p>
-            <p className="text-[16px] mt-auto">
+            <p className="text-[0.63vw] leading-tight">&ldquo;{item.quote}&rdquo;</p>
+            <p className="text-[0.42vw] mt-auto">
               {item.name}, {item.company}
             </p>
           </motion.div>

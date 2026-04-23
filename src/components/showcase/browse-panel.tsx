@@ -58,7 +58,7 @@ export function BrowsePanel({ screens }: Props) {
   const custom: CardCustom = { side: exitSide, mode };
 
   return (
-    <section className="relative flex-1 min-w-0 h-full rounded-4xl bg-panel/80 backdrop-blur-xl overflow-hidden p-6">
+    <section className="relative flex-[3] min-w-0 h-full rounded-4xl bg-panel/80 backdrop-blur-xl overflow-hidden p-6">
       <div className="absolute left-[35px] top-6 z-30">
         <ScribbleHeading rotate={-3.13}>2. Browse the features</ScribbleHeading>
       </div>
@@ -71,7 +71,7 @@ export function BrowsePanel({ screens }: Props) {
           className="relative"
           style={{
             aspectRatio: `${CARD_RATIO_W} / ${CARD_RATIO_H}`,
-            width: `min(88cqw, calc(88cqh * ${CARD_RATIO_W} / ${CARD_RATIO_H}))`,
+            width: "60cqw",
           }}
         >
           {backScreen && <BackCard key={backScreen.id} screen={backScreen} />}
@@ -116,10 +116,10 @@ export function BrowsePanel({ screens }: Props) {
                 }}
               >
                 <div className="pointer-events-auto rounded-[22.5px] bg-popover text-popover-foreground p-[22.5px] shadow-2xl flex flex-col gap-[4.5px]">
-                  <p className="text-[31.5px] leading-[45px] font-medium">
+                  <p className="text-[0.82vw] leading-[1.17vw] font-medium">
                     {topScreen.annotation.title}
                   </p>
-                  <p className="text-[31.5px] leading-[45px] text-muted-foreground">
+                  <p className="text-[0.82vw] leading-[1.17vw] text-muted-foreground">
                     {topScreen.annotation.body}
                   </p>
                 </div>

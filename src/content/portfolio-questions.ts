@@ -6,7 +6,6 @@ export const portfolioQuestions: WizardQuestion[] = [
     type: "textarea",
     prompt:
       "When your team reaches out to a prospect today, how would you describe the trigger that got them there?",
-    goesToBoard: true,
   },
   {
     id: "oneWord",
@@ -14,7 +13,6 @@ export const portfolioQuestions: WizardQuestion[] = [
     prompt:
       "What is one word you would use to describe what portfolio insights offers?",
     placeholder: "One word",
-    goesToBoard: true,
   },
   {
     id: "disappointment",

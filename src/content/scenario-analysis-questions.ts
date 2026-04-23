@@ -6,7 +6,6 @@ export const scenarioAnalysisQuestions: WizardQuestion[] = [
     type: "textarea",
     prompt:
       "How would you describe your approach to evaluating & underwriting a loan today?",
-    goesToBoard: true,
   },
   {
     id: "oneWord",
@@ -14,7 +13,6 @@ export const scenarioAnalysisQuestions: WizardQuestion[] = [
     prompt:
       "What is one word you would use to describe what the scenario analysis tool offers?",
     placeholder: "One word",
-    goesToBoard: true,
   },
   {
     id: "disappointment",
