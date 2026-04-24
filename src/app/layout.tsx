@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Patrick_Hand } from "next/font/google";
+import { Geist, Geist_Mono, Patrick_Hand, Titillium_Web } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,6 +19,13 @@ const patrickHand = Patrick_Hand({
   display: "swap",
 });
 
+const titilliumWeb = Titillium_Web({
+  variable: "--font-titillium",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Emerald — Feature Showcase",
   description: "Browse features and leave feedback",
@@ -32,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${geistSans.variable} ${geistMono.variable} ${patrickHand.variable} h-full antialiased`}
+      className={`dark ${geistSans.variable} ${geistMono.variable} ${patrickHand.variable} ${titilliumWeb.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}

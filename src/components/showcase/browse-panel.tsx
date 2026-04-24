@@ -126,7 +126,7 @@ export function BrowsePanel({ screens }: Props) {
                 }}
               >
                 <div className="pointer-events-auto rounded-[22.5px] bg-popover text-popover-foreground p-[22.5px] shadow-2xl flex flex-col gap-[4.5px]">
-                  <p className="text-[0.82vw] leading-[1.17vw] font-medium">
+                  <p className="text-[0.82vw] leading-[1.17vw] font-heading font-bold">
                     {topScreen.annotation.title}
                   </p>
                   <p className="text-[0.82vw] leading-[1.17vw] text-muted-foreground">

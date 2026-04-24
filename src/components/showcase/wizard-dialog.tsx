@@ -142,7 +142,7 @@ export function WizardDialog({
             >
               <ChevronLeft className="size-[1.25vw]" />
             </button>
-            <DialogTitle className="text-[1.88vw] font-medium leading-[1.1]">
+            <DialogTitle className="text-[1.88vw] font-bold leading-[1.1]">
               Add {category.shortLabel} Feedback
             </DialogTitle>
             <span className="ml-auto text-[1.41vw] text-muted-foreground tabular-nums">

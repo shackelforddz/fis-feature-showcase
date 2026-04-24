@@ -80,7 +80,7 @@ export function FeedbackDialog({ open, onOpenChange, category, onSubmitted }: Pr
     >
       <DialogContent className="sm:max-w-[37.5vw] gap-[1.67vw] p-[2.08vw]">
         <DialogHeader className="gap-[0.63vw]">
-          <DialogTitle className="text-[2.82vw] font-medium leading-[1.1]">
+          <DialogTitle className="text-[2.82vw] font-bold leading-[1.1]">
             Add {category.shortLabel} Feedback
           </DialogTitle>
           <DialogDescription className="text-[1.56vw] leading-[1.3] text-muted-foreground">

@@ -40,7 +40,7 @@ export function CategoryBar({ categories, selectedId, onSelect }: Props) {
                 {category.number}
               </span>
               <span className="flex-1 min-w-0 flex flex-col gap-2">
-                <span className="text-[1.25vw] font-medium leading-[1.25vw]">
+                <span className="text-[1.25vw] font-heading font-bold leading-[1.25vw]">
                   {category.name}
                 </span>
                 <span
