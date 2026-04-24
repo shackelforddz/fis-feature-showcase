@@ -78,48 +78,48 @@ export function FeedbackDialog({ open, onOpenChange, category, onSubmitted }: Pr
         onOpenChange(next);
       }}
     >
-      <DialogContent className="sm:max-w-[720px] gap-8 p-10">
-        <DialogHeader className="gap-3">
-          <DialogTitle className="text-4xl font-medium">
+      <DialogContent className="sm:max-w-[37.5vw] gap-[1.67vw] p-[2.08vw]">
+        <DialogHeader className="gap-[0.63vw]">
+          <DialogTitle className="text-[2.82vw] font-medium leading-[1.1]">
             Add {category.shortLabel} Feedback
           </DialogTitle>
-          <DialogDescription className="text-xl text-muted-foreground">
+          <DialogDescription className="text-[1.56vw] leading-[1.3] text-muted-foreground">
             {category.prompt}
           </DialogDescription>
         </DialogHeader>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-[1.25vw]">
             <FormField
               control={form.control}
               name="quote"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xl">Your feedback</FormLabel>
+                  <FormLabel className="text-[1.56vw]">Your feedback</FormLabel>
                   <FormControl>
                     <Textarea
                       {...field}
                       rows={4}
                       placeholder="Share what stood out to you…"
-                      className="text-2xl min-h-40 p-5"
+                      className="text-[1.88vw] min-h-[8.33vw] p-[1.04vw]"
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-[1.25vw]">
               <FormField
                 control={form.control}
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-xl">Your name</FormLabel>
+                    <FormLabel className="text-[1.56vw]">Your name</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
                         placeholder="Jane Doe"
-                        className="text-2xl h-16 px-5"
+                        className="text-[1.88vw] h-[3.33vw] px-[1.04vw]"
                       />
                     </FormControl>
                     <FormMessage />
@@ -131,12 +131,12 @@ export function FeedbackDialog({ open, onOpenChange, category, onSubmitted }: Pr
                 name="company"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-xl">Company</FormLabel>
+                    <FormLabel className="text-[1.56vw]">Company</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
                         placeholder="Acme Bank"
-                        className="text-2xl h-16 px-5"
+                        className="text-[1.88vw] h-[3.33vw] px-[1.04vw]"
                       />
                     </FormControl>
                     <FormMessage />
@@ -145,13 +145,13 @@ export function FeedbackDialog({ open, onOpenChange, category, onSubmitted }: Pr
               />
             </div>
 
-            {serverError && <p className="text-destructive text-lg">{serverError}</p>}
+            {serverError && <p className="text-destructive text-[1.41vw]">{serverError}</p>}
 
-            <DialogFooter className="mt-2">
+            <DialogFooter className="mt-[0.42vw]">
               <Button
                 type="submit"
                 disabled={isPending}
-                className="h-16 px-10 text-2xl rounded-full bg-brand text-brand-foreground hover:bg-brand/90 w-full"
+                className="h-[3.33vw] px-[2.08vw] text-[1.88vw] rounded-full bg-brand text-brand-foreground hover:bg-brand/90 w-full"
               >
                 {isPending ? "Submitting…" : `Submit ${category.shortLabel} Feedback`}
               </Button>

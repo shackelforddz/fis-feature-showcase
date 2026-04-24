@@ -125,31 +125,31 @@ export function WizardDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[920px] gap-0 p-0 overflow-hidden">
-        <DialogHeader className="px-10 pt-8 pb-4 gap-3">
-          <div className="flex items-center gap-4">
+      <DialogContent showCloseButton={false} className="sm:max-w-[47.92vw] gap-0 p-0 overflow-hidden">
+        <DialogHeader className="px-[2.08vw] pt-[1.67vw] pb-[0.83vw] gap-[0.63vw]">
+          <div className="flex items-center gap-[0.83vw]">
             <button
               type="button"
               onClick={goBack}
               disabled={step === 0}
               aria-label="Back"
               className={cn(
-                "size-12 rounded-full bg-muted flex items-center justify-center transition-opacity",
+                "size-[2.5vw] rounded-full bg-muted flex items-center justify-center transition-opacity",
                 step === 0
                   ? "opacity-30 pointer-events-none"
                   : "hover:bg-muted/80"
               )}
             >
-              <ChevronLeft className="size-6" />
+              <ChevronLeft className="size-[1.25vw]" />
             </button>
-            <DialogTitle className="text-2xl font-medium">
+            <DialogTitle className="text-[1.88vw] font-medium leading-[1.1]">
               Add {category.shortLabel} Feedback
             </DialogTitle>
-            <span className="ml-auto text-lg text-muted-foreground tabular-nums">
+            <span className="ml-auto text-[1.41vw] text-muted-foreground tabular-nums">
               {step + 1} / {totalQuestions + 1}
             </span>
           </div>
-          <div className="h-1 rounded-full bg-muted overflow-hidden">
+          <div className="h-[0.21vw] rounded-full bg-muted overflow-hidden">
             <motion.div
               className="h-full bg-brand"
               initial={false}
@@ -159,7 +159,7 @@ export function WizardDialog({
           </div>
         </DialogHeader>
 
-        <div className="px-10 pb-10 pt-4 min-h-[420px] flex flex-col">
+        <div className="px-[2.08vw] pb-[2.08vw] pt-[0.83vw] min-h-[21.88vw] flex flex-col">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={step}
@@ -168,7 +168,7 @@ export function WizardDialog({
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: direction * -40 }}
               transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
-              className="flex-1 flex flex-col gap-6"
+              className="flex-1 flex flex-col gap-[1.25vw]"
             >
               {isQuestionStep && currentQuestion ? (
                 <QuestionStep
@@ -190,15 +190,23 @@ export function WizardDialog({
           </AnimatePresence>
 
           {serverError && (
-            <p className="text-destructive text-base mt-4">{serverError}</p>
+            <p className="text-destructive text-[1.25vw] mt-[0.83vw]">{serverError}</p>
           )}
 
-          <div className="mt-6 flex justify-end">
+          <div className="mt-[1.25vw] flex justify-between items-center">
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={() => onOpenChange(false)}
+              className="h-[2.92vw] px-[2.08vw] text-[1.56vw] rounded-full text-muted-foreground hover:text-foreground hover:bg-muted"
+            >
+              Close
+            </Button>
             <Button
               type="button"
               onClick={goNext}
               disabled={!isCurrentValid || isPending}
-              className="h-14 px-10 text-xl rounded-full bg-brand text-brand-foreground hover:bg-brand/90 disabled:opacity-40 disabled:pointer-events-none"
+              className="h-[2.92vw] px-[2.08vw] text-[1.56vw] rounded-full bg-brand text-brand-foreground hover:bg-brand/90 disabled:opacity-40 disabled:pointer-events-none"
             >
               {isIdentityStep
                 ? isPending
@@ -248,8 +256,8 @@ function QuestionStep({
   onEnter: () => void;
 }) {
   return (
-    <div className="flex flex-col gap-5">
-      <p className="text-[0.68vw] leading-[1.3] font-medium text-foreground">
+    <div className="flex flex-col gap-[1.04vw]">
+      <p className="text-[1.02vw] leading-[1.3] font-medium text-foreground">
         {question.prompt}
       </p>
       {question.type === "textarea" && (
@@ -259,7 +267,7 @@ function QuestionStep({
           value={(value as string) ?? ""}
           onChange={(e) => onChange(e.target.value)}
           placeholder={question.placeholder ?? "Type your answer…"}
-          className="text-xl min-h-40 p-5"
+          className="text-[1.56vw] min-h-[8.33vw] p-[1.04vw]"
         />
       )}
       {question.type === "text" && (
@@ -274,7 +282,7 @@ function QuestionStep({
               onEnter();
             }
           }}
-          className="text-xl h-16 px-5"
+          className="text-[1.56vw] h-[3.33vw] px-[1.04vw]"
         />
       )}
       {question.type === "one-word" && (
@@ -291,11 +299,11 @@ function QuestionStep({
               onEnter();
             }
           }}
-          className="text-xl h-16 px-5"
+          className="text-[1.56vw] h-[3.33vw] px-[1.04vw]"
         />
       )}
       {question.type === "choice" && (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-[0.63vw]">
           {question.options.map((option) => {
             const selected = value === option.value;
             return (
@@ -304,7 +312,7 @@ function QuestionStep({
                 type="button"
                 onClick={() => onChange(option.value)}
                 className={cn(
-                  "text-left rounded-2xl border-2 px-6 py-5 text-xl transition-colors",
+                  "text-left rounded-2xl border-2 px-[1.25vw] py-[1.04vw] text-[1.56vw] transition-colors",
                   selected
                     ? "border-brand bg-brand/10 text-foreground"
                     : "border-border bg-card hover:border-muted-foreground/40"
@@ -347,8 +355,8 @@ function ScaleInput({
 }) {
   const count = max - min + 1;
   return (
-    <div className="flex flex-col gap-3">
-      <div className="flex gap-3">
+    <div className="flex flex-col gap-[0.63vw]">
+      <div className="flex gap-[0.63vw]">
         {Array.from({ length: count }).map((_, i) => {
           const v = min + i;
           const selected = value === v;
@@ -358,7 +366,7 @@ function ScaleInput({
               type="button"
               onClick={() => onChange(v)}
               className={cn(
-                "flex-1 h-20 rounded-2xl border-2 text-3xl font-medium transition-colors",
+                "flex-1 h-[4.17vw] rounded-2xl border-2 text-[2.34vw] font-medium transition-colors",
                 selected
                   ? "border-brand bg-brand text-brand-foreground"
                   : "border-border bg-card hover:border-muted-foreground/40"
@@ -369,7 +377,7 @@ function ScaleInput({
           );
         })}
       </div>
-      <div className="flex justify-between text-base text-muted-foreground px-1">
+      <div className="flex justify-between text-[1.25vw] text-muted-foreground px-[0.21vw]">
         <span>
           {min} — {minLabel}
         </span>
@@ -401,29 +409,29 @@ function IdentityStep({
     }
   };
   return (
-    <div className="flex flex-col gap-5">
-      <p className="text-[0.68vw] leading-[1.3] font-medium text-foreground">
+    <div className="flex flex-col gap-[1.04vw]">
+      <p className="text-[1.02vw] leading-[1.3] font-medium text-foreground">
         Last step — who are you?
       </p>
-      <div className="flex flex-col gap-1.5">
-        <label className="text-lg text-muted-foreground">Your name</label>
+      <div className="flex flex-col gap-[0.31vw]">
+        <label className="text-[1.41vw] text-muted-foreground">Your name</label>
         <Input
           autoFocus
           value={name}
           onChange={(e) => onNameChange(e.target.value)}
           onKeyDown={handleEnter}
           placeholder="Jane Doe"
-          className="text-xl h-16 px-5"
+          className="text-[1.56vw] h-[3.33vw] px-[1.04vw]"
         />
       </div>
-      <div className="flex flex-col gap-1.5">
-        <label className="text-lg text-muted-foreground">Company</label>
+      <div className="flex flex-col gap-[0.31vw]">
+        <label className="text-[1.41vw] text-muted-foreground">Company</label>
         <Input
           value={company}
           onChange={(e) => onCompanyChange(e.target.value)}
           onKeyDown={handleEnter}
           placeholder="Acme Bank"
-          className="text-xl h-16 px-5"
+          className="text-[1.56vw] h-[3.33vw] px-[1.04vw]"
         />
       </div>
     </div>
