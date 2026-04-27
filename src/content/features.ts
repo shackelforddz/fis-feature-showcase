@@ -1,12 +1,12 @@
 import type { CategoryId, FeatureScreen } from "@/lib/types";
 
-const placeholder = "/placeholder.png";
+const video = "/features/port-2.mp4";
 
 export const features: Record<CategoryId, FeatureScreen[]> = {
   "portfolio-insights": [
     {
       id: "pi-1",
-      image: placeholder,
+      image: "/features/port-1.png",
       annotation: {
         title: "Growth Opportunities",
         body: "Identify high-propensity leads with next actions like Expansion, Retention, or Wallet Share.",
@@ -16,7 +16,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "pi-2",
-      image: "/test.mp4",
+      image: video,
       annotation: {
         title: "Lender's Co-pilot",
         body: "A unified intelligence layer that identifies high-growth clients missing key products.",
@@ -26,7 +26,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "pi-3",
-      image: placeholder,
+      image: "/features/port-3.mp4",
       annotation: {
         title: "Evidence Layer",
         body: "Data behind growth opportunities with internal and third-party data. Real-time DSCR via API.",
@@ -36,7 +36,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "pi-4",
-      image: placeholder,
+      image: "/features/port-4.mp4",
       annotation: {
         title: "AI Generated Documents",
         body: "Next steps for automated document creation based on real-time information.",
@@ -48,7 +48,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
   "risk-mitigation": [
     {
       id: "rm-1",
-      image: placeholder,
+      image: video,
       annotation: {
         title: "Servicing Suggestions",
         body: "The risk score synthesizes a borrower's health and signs. When flagged, it matches concerns to suggestions for mitigation, restructuring, or secondary market moves.",
@@ -58,7 +58,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "rm-2",
-      image: placeholder,
+      image: video,
       annotation: {
         title: "Lender's Co-pilot",
         body: "Lenders can cross-reference intent vs reality using semantic search, identifying behavioral drift and compliance guardrails.",
@@ -68,7 +68,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "rm-3",
-      image: placeholder,
+      image: video,
       annotation: {
         title: "Evidence Layer",
         body: "Correlates internal data with external data like UCC filing.",
@@ -78,7 +78,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "rm-4",
-      image: placeholder,
+      image: video,
       annotation: {
         title: "AI Generated Documents",
         body: "Provides next steps for automated document creation based on real-time information.",
@@ -90,7 +90,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
   "loan-evaluation": [
     {
       id: "le-1",
-      image: placeholder,
+      image: video,
       annotation: {
         title: "Pre-approvals",
         body: "Real-time pre-approval for low-risk cases, isolating complex ones for review. Each result links to the rule with a confidence score.",
@@ -100,7 +100,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "le-2",
-      image: placeholder,
+      image: video,
       annotation: {
         title: "Lender's Co-pilot",
         body: "Use historical data to recommend competitive pricing and products.",
@@ -110,7 +110,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "le-3",
-      image: placeholder,
+      image: video,
       annotation: {
         title: "Evidence Layer",
         body: "Prospects undergo risk criteria checks. The system performs shadow underwriting for limits.",
@@ -120,7 +120,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "le-4",
-      image: placeholder,
+      image: video,
       annotation: {
         title: "AI Documents",
         body: "Relationship managers receive next steps for automated document creation.",
@@ -132,7 +132,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
   "scenario-analysis": [
     {
       id: "sa-1",
-      image: placeholder,
+      image: video,
       annotation: {
         title: "Vulnerability Potentials",
         body: "The system uses borrower data to identify vulnerabilities and prompts underwriters with tests.",
@@ -142,7 +142,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "sa-2",
-      image: placeholder,
+      image: video,
       annotation: {
         title: "Visual Multi-Variate Scenario Analysis",
         body: "The system tests the loan's viability over multiple scenarios to produce recommendations.",
@@ -152,7 +152,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "sa-3",
-      image: placeholder,
+      image: video,
       annotation: {
         title: "AI Generated Documents",
         body: "Generate a risk-aligned credit memo from real-time borrower information.",

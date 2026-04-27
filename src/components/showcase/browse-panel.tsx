@@ -21,8 +21,8 @@ type Props = {
 
 const SWIPE_DISTANCE = 160;
 const SWIPE_VELOCITY = 500;
-const CARD_RATIO_W = 1440;
-const CARD_RATIO_H = 1024;
+const CARD_RATIO_W = 3840;
+const CARD_RATIO_H = 1945;
 
 type ExitSide = "left" | "right";
 type TransitionMode = "swipe" | "fade";
@@ -92,7 +92,7 @@ export function BrowsePanel({ screens }: Props) {
           className="relative"
           style={{
             aspectRatio: `${CARD_RATIO_W} / ${CARD_RATIO_H}`,
-            width: "60cqw",
+            width: "70cqw",
           }}
         >
           {backScreen && <BackCard key={backScreen.id} screen={backScreen} />}
@@ -135,8 +135,8 @@ export function BrowsePanel({ screens }: Props) {
                 style={{
                   top: `${topScreen.annotation.y ?? 50}%`,
                   ...(topScreen.annotation.side === "left"
-                    ? { left: "-9vw" }
-                    : { right: "-9vw" }),
+                    ? { left: "-10vw" }
+                    : { right: "-10vw" }),
                   transform: "translateY(-50%)",
                 }}
               >
