@@ -1,15 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import {
+  animate,
   AnimatePresence,
   motion,
   useMotionValue,
   useTransform,
   type PanInfo,
 } from "motion/react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { FeatureScreen } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { ScribbleHeading } from "./scribble-heading";
@@ -33,6 +33,25 @@ export function BrowsePanel({ screens }: Props) {
   const [exitSide, setExitSide] = useState<ExitSide>("left");
   const [mode, setMode] = useState<TransitionMode>("swipe");
   const [isDragging, setIsDragging] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
+
+  // Re-arm the swipe hint after 5 minutes of no user activity (kiosk idle).
+  // Listens window-wide so e.g. typing in the feedback form also counts.
+  useEffect(() => {
+    if (!hasInteracted) return;
+    let idleTimer: ReturnType<typeof setTimeout>;
+    const reset = () => {
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => setHasInteracted(false), 5 * 60 * 1000);
+    };
+    reset();
+    const events = ["pointerdown", "pointermove", "keydown", "touchstart"];
+    events.forEach((e) => window.addEventListener(e, reset, { passive: true }));
+    return () => {
+      clearTimeout(idleTimer);
+      events.forEach((e) => window.removeEventListener(e, reset));
+    };
+  }, [hasInteracted]);
 
   // Detect category change synchronously so the exit animation picks up the
   // new mode, rather than reading a stale value from a useEffect that runs
@@ -85,6 +104,8 @@ export function BrowsePanel({ screens }: Props) {
               custom={custom}
               onSwipe={advance}
               setIsDragging={setIsDragging}
+              hintActive={!hasInteracted}
+              onInteract={() => setHasInteracted(true)}
             />
           </AnimatePresence>
 
@@ -94,34 +115,28 @@ export function BrowsePanel({ screens }: Props) {
                 key={topScreen.id}
                 initial={{
                   opacity: 0,
-                  x: topScreen.annotation.side === "left" ? -16 : 16,
-                  scale: 0.98,
+                  x: topScreen.annotation.side === "left" ? "-15%" : "15%",
                 }}
                 animate={{
                   opacity: isDragging ? 0 : 1,
                   x: 0,
-                  scale: 1,
                 }}
                 exit={{
                   opacity: 0,
-                  x: topScreen.annotation.side === "left" ? -8 : 8,
-                  scale: 0.98,
-                  transition: { duration: 0.35, ease: "easeOut" },
+                  x: topScreen.annotation.side === "left" ? "-15%" : "15%",
+                  transition: { duration: 0.35, ease: [0.4, 0, 1, 1] },
                 }}
                 transition={{
-                  default: {
-                    duration: 0.28,
-                    ease: [0.2, 0.8, 0.2, 1],
-                    delay: 0.5,
-                  },
-                  opacity: { duration: 0.35, ease: "easeOut" },
+                  duration: 0.5,
+                  ease: [0.2, 0.8, 0.2, 1],
+                  delay: 0.5,
                 }}
                 className="pointer-events-none absolute z-[25] w-[29%] max-w-[459px]"
                 style={{
                   top: `${topScreen.annotation.y ?? 50}%`,
                   ...(topScreen.annotation.side === "left"
-                    ? { left: "-25%" }
-                    : { right: "-25%" }),
+                    ? { left: "-9vw" }
+                    : { right: "-9vw" }),
                   transform: "translateY(-50%)",
                 }}
               >
@@ -139,10 +154,21 @@ export function BrowsePanel({ screens }: Props) {
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-4">
-        <StackButton onClick={() => advance(-1)} aria-label="Previous feature">
-          <ChevronLeft className="size-10" />
-        </StackButton>
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-[1vw]">
+        <AnimatePresence>
+          {!hasInteracted && (
+            <motion.div
+              key="swipe-hint"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 6 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="text-white/80 text-[0.94vw] font-heading font-bold tracking-wide pointer-events-none"
+            >
+              Swipe me
+            </motion.div>
+          )}
+        </AnimatePresence>
         <div className="flex items-center gap-3 px-2">
           {screens.map((s, i) => (
             <span
@@ -154,26 +180,8 @@ export function BrowsePanel({ screens }: Props) {
             />
           ))}
         </div>
-        <StackButton onClick={() => advance(1)} aria-label="Next feature">
-          <ChevronRight className="size-10" />
-        </StackButton>
       </div>
     </section>
-  );
-}
-
-function StackButton({
-  children,
-  ...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement>) {
-  return (
-    <button
-      type="button"
-      {...props}
-      className="size-20 rounded-full bg-black/50 backdrop-blur text-white flex items-center justify-center hover:bg-black/70 transition-colors"
-    >
-      {children}
-    </button>
   );
 }
 
@@ -252,16 +260,32 @@ function TopCard({
   custom,
   onSwipe,
   setIsDragging,
+  hintActive,
+  onInteract,
 }: {
   screen: FeatureScreen;
   custom: CardCustom;
   onSwipe: (dir: 1 | -1) => void;
   setIsDragging: (b: boolean) => void;
+  hintActive: boolean;
+  onInteract: () => void;
 }) {
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-320, 0, 320], [-16, 0, 16]);
   const pressScale = useTransform(x, [-320, 0, 320], [0.97, 1, 0.97]);
   const shadowOpacity = useTransform(x, [-240, 0, 240], [0.25, 0.65, 0.25]);
+
+  useEffect(() => {
+    if (!hintActive) return;
+    const controls = animate(x, [0, 60, 0, -25, 0], {
+      duration: 1.6,
+      ease: [0.4, 0, 0.2, 1],
+      repeat: Infinity,
+      repeatDelay: 2.4,
+      delay: 1.2,
+    });
+    return () => controls.stop();
+  }, [hintActive, x]);
 
   const handleDragEnd = (
     _: MouseEvent | TouchEvent | PointerEvent,
@@ -294,7 +318,10 @@ function TopCard({
       drag="x"
       dragElastic={0.7}
       dragMomentum={false}
-      onDragStart={() => setIsDragging(true)}
+      onDragStart={() => {
+        onInteract();
+        setIsDragging(true);
+      }}
       onDragEnd={handleDragEnd}
     >
       <motion.div
