@@ -3,7 +3,6 @@ import type { Category } from "@/lib/types";
 export const categories: Category[] = [
   {
     id: "portfolio-insights",
-    number: 1,
     name: "Portfolio Insights",
     shortLabel: "Portfolio",
     description:
@@ -13,7 +12,6 @@ export const categories: Category[] = [
   },
   {
     id: "risk-mitigation",
-    number: 2,
     name: "Risk Mitigation",
     shortLabel: "Risk",
     description:
@@ -23,7 +21,6 @@ export const categories: Category[] = [
   },
   {
     id: "loan-evaluation",
-    number: 3,
     name: "Loan Evaluation Center",
     shortLabel: "Loan",
     description:
@@ -33,7 +30,6 @@ export const categories: Category[] = [
   },
   {
     id: "scenario-analysis",
-    number: 4,
     name: "Scenario Analysis",
     shortLabel: "Scenario",
     description:

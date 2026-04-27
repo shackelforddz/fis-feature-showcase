@@ -6,7 +6,6 @@ export type CategoryId =
 
 export type Category = {
   id: CategoryId;
-  number: number;
   name: string;
   shortLabel: string;
   description: string;
