@@ -3,9 +3,22 @@ import type { WizardQuestion } from "@/lib/types";
 export const portfolioQuestions: WizardQuestion[] = [
   {
     id: "context",
-    type: "textarea",
+    type: "choice",
     prompt:
       "When your team reaches out to a prospect today, how would you describe the trigger that got them there?",
+    options: [
+      { value: "manual_random", label: "Manual/ Random" },
+      { value: "siloed", label: "Siloed/disconnected" },
+      {
+        value: "multiple_data_feeds",
+        label: "Involves bringing together multiple data feeds",
+      },
+      {
+        value: "synthesized_dashboard",
+        label: "Involves viewing a dashboard of synthesized insights",
+      },
+      { value: "predictive_agentic", label: "Predictive / Agentic" },
+    ],
   },
   {
     id: "oneWord",

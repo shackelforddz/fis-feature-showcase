@@ -3,9 +3,22 @@ import type { WizardQuestion } from "@/lib/types";
 export const scenarioAnalysisQuestions: WizardQuestion[] = [
   {
     id: "context",
-    type: "textarea",
+    type: "choice",
     prompt:
       "How would you describe your approach to evaluating & underwriting a loan today?",
+    options: [
+      { value: "manual_random", label: "Manual/ Random" },
+      { value: "siloed", label: "Siloed/disconnected" },
+      {
+        value: "multiple_data_feeds",
+        label: "Involves bringing together multiple data feeds",
+      },
+      {
+        value: "synthesized_dashboard",
+        label: "Involves viewing a dashboard of synthesized insights",
+      },
+      { value: "predictive_agentic", label: "Predictive / Agentic" },
+    ],
   },
   {
     id: "oneWord",
