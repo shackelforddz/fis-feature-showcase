@@ -257,7 +257,7 @@ function QuestionStep({
 }) {
   return (
     <div className="flex flex-col gap-[1.04vw]">
-      <p className="text-[1.02vw] leading-[1.3] font-medium text-foreground">
+      <p className="text-[1.53vw] leading-[1.3] font-medium text-foreground">
         {question.prompt}
       </p>
       {question.type === "textarea" && (
@@ -410,7 +410,7 @@ function IdentityStep({
   };
   return (
     <div className="flex flex-col gap-[1.04vw]">
-      <p className="text-[1.02vw] leading-[1.3] font-medium text-foreground">
+      <p className="text-[1.53vw] leading-[1.3] font-medium text-foreground">
         Last step — who are you?
       </p>
       <div className="flex flex-col gap-[0.31vw]">
