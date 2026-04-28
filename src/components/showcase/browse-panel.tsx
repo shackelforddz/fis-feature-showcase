@@ -185,16 +185,30 @@ export function BrowsePanel({ screens }: Props) {
   );
 }
 
-function ScreenMedia({ src }: { src: string }) {
+function ScreenMedia({ src, active = true }: { src: string; active?: boolean }) {
   if (/\.(mp4|webm|mov)$/i.test(src)) {
+    if (active) {
+      return (
+        <video
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="absolute inset-0 h-full w-full object-cover pointer-events-none select-none"
+        />
+      );
+    }
     return (
       <video
-        src={src}
-        autoPlay
-        loop
+        src={`${src}#t=0.01`}
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
+        onLoadedMetadata={(e) => {
+          e.currentTarget.currentTime = 0.01;
+        }}
         className="absolute inset-0 h-full w-full object-cover pointer-events-none select-none"
       />
     );
@@ -221,7 +235,7 @@ function BackCard({ screen }: { screen: FeatureScreen }) {
       style={{ zIndex: 10, transformOrigin: "center center" }}
       className="absolute inset-0 rounded-[14px] overflow-hidden bg-black/40 shadow-2xl pointer-events-none"
     >
-      <ScreenMedia src={screen.image} />
+      <ScreenMedia src={screen.image} active={false} />
     </motion.div>
   );
 }
