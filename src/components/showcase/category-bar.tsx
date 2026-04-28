@@ -33,7 +33,7 @@ export function CategoryBar({ categories, selectedId, onSelect }: Props) {
               onClick={() => onSelect(category.id)}
               aria-pressed={isActive}
               className={cn(
-                "flex-1 min-w-0 h-full rounded-4xl p-6 flex items-start gap-6 text-left transition-colors outline-none",
+                "flex-1 min-w-0 h-full rounded-4xl p-6 flex items-center gap-6 text-left transition-colors outline-none",
                 "focus-visible:ring-4 focus-visible:ring-brand/60",
                 isActive
                   ? "bg-white text-background"
@@ -42,7 +42,7 @@ export function CategoryBar({ categories, selectedId, onSelect }: Props) {
             >
               <span
                 className={cn(
-                  "shrink-0 w-[5vw] self-center flex items-center justify-center",
+                  "shrink-0 w-[5vw] flex items-center justify-center",
                   isActive ? "text-background" : "text-foreground"
                 )}
               >
