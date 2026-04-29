@@ -6,7 +6,7 @@ import type { CategoryId } from "@/lib/types";
 const DEFAULT_COLORS = ["#111827", "#4BCD3E", "#37952e", "#4ed699", "#a0d851", "#4BCD3E"];
 
 const COLORS_BY_CATEGORY: Partial<Record<CategoryId, string[]>> = {
-  "risk-mitigation": ["#111827", "#EF4444", "#7F1D1D", "#FB7185", "#FB923C", "#EF4444"],
+  "risk-mitigation": ["#111827", "#EB1F32", "#7F1D1D", "#EB1F32", "#fb653c", "#EB1F32"],
 };
 
 const FEATHER = 0.06;
@@ -66,7 +66,7 @@ export function MeshGradientBg({
           colors={colors}
           distortion={1}
           swirl={2}
-          speed={0.45}
+          speed={0.2}
           scale={1.4}
           grainMixer={0.00}
           grainOverlay={0.00}

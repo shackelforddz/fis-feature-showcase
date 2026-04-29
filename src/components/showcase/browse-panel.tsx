@@ -93,7 +93,7 @@ export function BrowsePanel({ screens, categoryId }: Props) {
           className="relative"
           style={{
             aspectRatio: `${CARD_RATIO_W} / ${CARD_RATIO_H}`,
-            width: "80cqw",
+            width: "75cqw",
           }}
         >
           {backScreen && <BackCard key={backScreen.id} screen={backScreen} />}
