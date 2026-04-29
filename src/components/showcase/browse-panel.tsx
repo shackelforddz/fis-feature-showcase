@@ -10,25 +10,26 @@ import {
   useTransform,
   type PanInfo,
 } from "motion/react";
-import type { FeatureScreen } from "@/lib/types";
+import type { CategoryId, FeatureScreen } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { ScribbleHeading } from "./scribble-heading";
 import { MeshGradientBg } from "./mesh-gradient-bg";
 
 type Props = {
   screens: FeatureScreen[];
+  categoryId: CategoryId;
 };
 
 const SWIPE_DISTANCE = 160;
 const SWIPE_VELOCITY = 500;
-const CARD_RATIO_W = 3840;
-const CARD_RATIO_H = 1945;
+const CARD_RATIO_W = 3118;
+const CARD_RATIO_H = 1978;
 
 type ExitSide = "left" | "right";
 type TransitionMode = "swipe" | "fade";
 type CardCustom = { side: ExitSide; mode: TransitionMode };
 
-export function BrowsePanel({ screens }: Props) {
+export function BrowsePanel({ screens, categoryId }: Props) {
   const [index, setIndex] = useState(0);
   const [exitSide, setExitSide] = useState<ExitSide>("left");
   const [mode, setMode] = useState<TransitionMode>("swipe");
@@ -79,7 +80,7 @@ export function BrowsePanel({ screens }: Props) {
 
   return (
     <section className="relative flex-[3] min-w-0 h-full rounded-4xl bg-panel backdrop-blur-xl overflow-hidden p-6">
-      <MeshGradientBg className="absolute inset-0 z-0" />
+      <MeshGradientBg className="absolute inset-0 z-0" categoryId={categoryId} />
       <div className="absolute left-[35px] top-6 z-30">
         <ScribbleHeading rotate={-3.13}>2. Browse the features</ScribbleHeading>
       </div>

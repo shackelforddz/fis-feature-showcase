@@ -39,7 +39,7 @@ export function Showcase({ initialFeedback }: Props) {
   return (
     <div className="h-dvh w-dvw flex flex-col gap-12 p-12 bg-background select-none">
       <div className="flex-1 min-h-0 flex gap-12 items-stretch">
-        <BrowsePanel screens={screens} />
+        <BrowsePanel screens={screens} categoryId={selectedId} />
         <FeedbackPanel
           category={selected}
           items={items}
