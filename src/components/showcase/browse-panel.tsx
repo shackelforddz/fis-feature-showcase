@@ -188,10 +188,12 @@ export function BrowsePanel({ screens, categoryId }: Props) {
 
 function ScreenMedia({ src, active = true }: { src: string; active?: boolean }) {
   if (/\.(mp4|webm|mov)$/i.test(src)) {
+    const posterSrc = src.replace(/\.(mp4|webm|mov)$/i, "-poster.jpg");
     if (active) {
       return (
         <video
           src={src}
+          poster={posterSrc}
           autoPlay
           loop
           muted
@@ -202,15 +204,13 @@ function ScreenMedia({ src, active = true }: { src: string; active?: boolean }) 
       );
     }
     return (
-      <video
-        src={`${src}#t=0.01`}
-        muted
-        playsInline
-        preload="metadata"
-        onLoadedMetadata={(e) => {
-          e.currentTarget.currentTime = 0.01;
-        }}
-        className="absolute inset-0 h-full w-full object-cover pointer-events-none select-none"
+      <Image
+        src={posterSrc}
+        alt=""
+        fill
+        sizes="(min-width: 1024px) 60vw, 100vw"
+        className="object-cover pointer-events-none select-none"
+        draggable={false}
       />
     );
   }
