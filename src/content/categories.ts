@@ -30,7 +30,7 @@ export const categories: Category[] = [
   },
   {
     id: "scenario-analysis",
-    name: "Scenario Analysis",
+    name: "Visual Scenario Analysis",
     shortLabel: "Scenario",
     description:
       "Automates insight extraction from unstructured data, enabling real-time stress-testing of variables and assessing deal structure impact. Results are traceable.",
