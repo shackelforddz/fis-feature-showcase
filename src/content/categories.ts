@@ -6,7 +6,7 @@ export const categories: Category[] = [
     name: "Portfolio Insights",
     shortLabel: "Portfolio",
     description:
-      "Uses modeling to find leads for upsell and cross-sell. Users can generate documents for review.",
+      "Identity leads to upsell/cross sell through lookalike modeling with generated documents for review",
     prompt:
       "Is there anything that you would add or take away from portfolio insights?",
   },
@@ -15,7 +15,7 @@ export const categories: Category[] = [
     name: "Risk Mitigation",
     shortLabel: "Risk",
     description:
-      "Provides warnings based on the borrower's health and signals; includes strategies to mitigate, restructure, or monetize and options to generate review documents.",
+      "Surface warnings based on a borrowers health and external signals; with strategies to mitigate, restructure or monetize",
     prompt:
       "Is there anything that you would add or take away from risk mitigation?",
   },
@@ -24,7 +24,7 @@ export const categories: Category[] = [
     name: "Loan Evaluation Center",
     shortLabel: "Loan",
     description:
-      "Provide pre-approval for each loan, linked to evidence, with option to auto-generate documents like term sheets and credit memos using real-time data.",
+      "Provide pre-approvals for loans with supporting evidence with generated documents for review",
     prompt:
       "Is there anything that you would add or take away from the loan evaluation center?",
   },
@@ -33,7 +33,7 @@ export const categories: Category[] = [
     name: "Visual Scenario Analysis",
     shortLabel: "Scenario",
     description:
-      "Automates insight extraction from unstructured data, enabling real-time stress-testing of variables and assessing deal structure impact. Results are traceable.",
+      "Automate insight extraction, enabling real-time stress testing of variables for the deal structure",
     prompt:
       "Is there anything that you would add or take away from scenario analysis?",
   },
