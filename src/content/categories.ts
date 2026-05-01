@@ -6,7 +6,7 @@ export const categories: Category[] = [
     name: "Portfolio Insights",
     shortLabel: "Portfolio",
     description:
-      "Identity leads to upsell/cross sell through lookalike modeling with generated documents for review",
+      "Identity leads to upsell/cross-sell through lookalike modeling with generated documents for review",
     prompt:
       "Is there anything that you would add or take away from portfolio insights?",
   },
