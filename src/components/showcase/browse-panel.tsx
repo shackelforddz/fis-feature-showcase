@@ -82,7 +82,7 @@ export function BrowsePanel({ screens, categoryId }: Props) {
     <section className="relative flex-[3] min-w-0 h-full rounded-4xl bg-panel backdrop-blur-xl overflow-hidden p-6">
       <MeshGradientBg className="absolute inset-0 z-0" categoryId={categoryId} />
       <div className="absolute left-[35px] top-6 z-30">
-        <ScribbleHeading rotate={-3.13}>2. Browse updated features</ScribbleHeading>
+        <ScribbleHeading rotate={-3.13}>2. Browse the features</ScribbleHeading>
       </div>
 
       <div
