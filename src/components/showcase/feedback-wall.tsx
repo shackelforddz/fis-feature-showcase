@@ -85,8 +85,8 @@ function Sticky({
       onPointerUp={cancel}
       onPointerLeave={cancel}
       onPointerCancel={cancel}
-      style={{ WebkitTouchCallout: "none" }}
-      className="relative aspect-square bg-sticky text-sticky-foreground p-6 shadow-2xl font-handwritten flex flex-col gap-4 cursor-pointer"
+      style={{ WebkitTouchCallout: "none", containerType: "inline-size" }}
+      className="relative aspect-square bg-sticky text-sticky-foreground shadow-2xl font-handwritten cursor-pointer"
     >
       <AnimatePresence>
         {isPinned && (
@@ -96,16 +96,18 @@ function Sticky({
             animate={{ scale: 1, rotate: 25, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: "spring", stiffness: 280, damping: 16 }}
-            className="absolute -top-3 -right-3 bg-primary text-primary-foreground rounded-full p-2 shadow-lg pointer-events-none"
+            className="absolute -top-[3cqi] -right-[3cqi] bg-primary text-primary-foreground rounded-full p-[3cqi] shadow-lg pointer-events-none"
           >
-            <Pin className="w-[1vw] h-[1vw]" strokeWidth={2.5} />
+            <Pin className="w-[6cqi] h-[6cqi]" strokeWidth={2.5} />
           </motion.div>
         )}
       </AnimatePresence>
-      <p className="text-[0.94vw] leading-tight">&ldquo;{item.quote}&rdquo;</p>
-      <p className="text-[0.63vw] mt-auto">
-        {item.name}, {item.company}
-      </p>
+      <div className="h-full w-full flex flex-col p-[7cqi] gap-[4cqi]">
+        <p className="text-[9.5cqi] leading-[1.15]">&ldquo;{item.quote}&rdquo;</p>
+        <p className="text-[6cqi] mt-auto">
+          {item.name}, {item.company}
+        </p>
+      </div>
     </motion.div>
   );
 }
