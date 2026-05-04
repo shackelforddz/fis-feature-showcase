@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Pin } from "lucide-react";
 import type { Feedback } from "@/lib/types";
@@ -12,9 +12,29 @@ type Props = {
 const rotations = [-3.13, 3.8, -2.4, 2.6, -3.6, 3.1, -2.1, 4.2, -3.8];
 const LONG_PRESS_MS = 500;
 const DISPLAY_LIMIT = 9;
+const PIN_STORAGE_KEY = "feedback-wall-pinned";
 
 export function FeedbackWall({ items }: Props) {
   const [pinned, setPinned] = useState<Set<string>>(new Set());
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    try {
+      const raw = window.localStorage.getItem(PIN_STORAGE_KEY);
+      if (raw) setPinned(new Set(JSON.parse(raw) as string[]));
+    } catch {}
+    setHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    try {
+      window.localStorage.setItem(
+        PIN_STORAGE_KEY,
+        JSON.stringify(Array.from(pinned))
+      );
+    } catch {}
+  }, [hydrated, pinned]);
 
   const togglePin = (id: string) => {
     setPinned((prev) => {
