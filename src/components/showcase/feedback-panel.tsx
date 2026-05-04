@@ -26,7 +26,7 @@ export function FeedbackPanel({ category, items, onAddClick }: Props) {
       <Button
         type="button"
         onClick={onAddClick}
-        className="h-[108px] w-full rounded-full bg-brand text-brand-foreground text-[1.1vw] font-medium hover:bg-brand/90"
+        className="h-[108px] w-full rounded-full bg-brand text-brand-foreground text-[1.1vw] font-bold hover:bg-brand/90"
       >
         Add {category.shortLabel} Feedback
       </Button>

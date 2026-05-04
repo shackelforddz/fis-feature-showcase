@@ -366,7 +366,7 @@ function ScaleInput({
               type="button"
               onClick={() => onChange(v)}
               className={cn(
-                "flex-1 h-[4.17vw] rounded-2xl border-2 text-[2.34vw] font-medium transition-colors",
+                "flex-1 h-[4.17vw] rounded-2xl border-2 text-[2.34vw] font-bold transition-colors",
                 selected
                   ? "border-brand bg-brand text-brand-foreground"
                   : "border-border bg-card hover:border-muted-foreground/40"
