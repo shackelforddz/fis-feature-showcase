@@ -59,16 +59,18 @@ export function BrowsePanel({ screens, categoryId }: Props) {
   // new mode, rather than reading a stale value from a useEffect that runs
   // after render.
   const [prevScreens, setPrevScreens] = useState(screens);
+  let activeIndex = index;
   if (prevScreens !== screens) {
     setPrevScreens(screens);
     setMode("fade");
     setIndex(0);
     setExitSide("left");
+    activeIndex = 0;
   }
 
   const total = screens.length;
-  const topScreen = screens[index];
-  const backScreen = total > 1 ? screens[(index + 1) % total] : null;
+  const topScreen = screens[activeIndex];
+  const backScreen = total > 1 ? screens[(activeIndex + 1) % total] : null;
 
   const advance = (dir: 1 | -1) => {
     // dir=+1 (next) → outgoing card exits left; dir=-1 (prev) → exits right.
@@ -101,7 +103,7 @@ export function BrowsePanel({ screens, categoryId }: Props) {
 
           <AnimatePresence initial={false} custom={custom}>
             <TopCard
-              key={`${topScreen.id}-${index}`}
+              key={`${topScreen.id}-${activeIndex}`}
               screen={topScreen}
               custom={custom}
               onSwipe={advance}
@@ -177,7 +179,7 @@ export function BrowsePanel({ screens, categoryId }: Props) {
             key={s.id}
             className={cn(
               "h-3 rounded-full transition-all duration-300",
-              i === index ? "w-12 bg-white" : "w-3 bg-white/40"
+              i === activeIndex ? "w-12 bg-white" : "w-3 bg-white/40"
             )}
           />
         ))}
