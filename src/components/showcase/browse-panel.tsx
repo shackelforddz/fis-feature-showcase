@@ -324,7 +324,7 @@ function TopCard({
   return (
     <motion.div
       className="absolute inset-0 rounded-[14px] overflow-hidden bg-black/40 cursor-grab active:cursor-grabbing"
-      style={{ x, rotate, scale: pressScale, zIndex: 20 }}
+      style={{ x, rotate, scale: pressScale, zIndex: 20, touchAction: "none" }}
       variants={topCardVariants}
       custom={custom}
       initial="initial"
