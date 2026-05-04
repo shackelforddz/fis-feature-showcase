@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Patrick_Hand, Titillium_Web } from "next/font/google";
+import {
+  Geist_Mono,
+  Patrick_Hand,
+  Source_Sans_3,
+  Titillium_Web,
+} from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -39,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${geistSans.variable} ${geistMono.variable} ${patrickHand.variable} ${titilliumWeb.variable} h-full antialiased`}
+      className={`dark ${sourceSans.variable} ${geistMono.variable} ${patrickHand.variable} ${titilliumWeb.variable} h-full antialiased`}
     >
       <body
         className="min-h-full flex flex-col bg-background text-foreground"

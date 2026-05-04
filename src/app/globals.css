@@ -12,7 +12,7 @@
   --color-brand-foreground: var(--brand-foreground);
   --color-sticky: var(--sticky);
   --color-sticky-foreground: var(--sticky-foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
   --font-handwritten: var(--font-handwritten);
   --font-heading: var(--font-titillium);
