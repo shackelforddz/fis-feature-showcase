@@ -10,6 +10,7 @@ import {
   useTransform,
   type PanInfo,
 } from "motion/react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { CategoryId, FeatureScreen } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { ScribbleHeading } from "./scribble-heading";
@@ -155,32 +156,31 @@ export function BrowsePanel({ screens, categoryId }: Props) {
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-[1vw]">
-        <AnimatePresence>
-          {!hasInteracted && (
-            <motion.div
-              key="swipe-hint"
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 6 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="text-white/80 text-[0.94vw] font-heading font-bold tracking-wide pointer-events-none"
-            >
-              Swipe me
-            </motion.div>
-          )}
-        </AnimatePresence>
-        <div className="flex items-center gap-3 px-2">
-          {screens.map((s, i) => (
-            <span
-              key={s.id}
-              className={cn(
-                "h-3 rounded-full transition-all duration-300",
-                i === index ? "w-12 bg-white" : "w-3 bg-white/40"
-              )}
-            />
-          ))}
-        </div>
+      <NavArrow
+        direction="prev"
+        onClick={() => {
+          setHasInteracted(true);
+          advance(-1);
+        }}
+      />
+      <NavArrow
+        direction="next"
+        onClick={() => {
+          setHasInteracted(true);
+          advance(1);
+        }}
+      />
+
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 px-2">
+        {screens.map((s, i) => (
+          <span
+            key={s.id}
+            className={cn(
+              "h-3 rounded-full transition-all duration-300",
+              i === index ? "w-12 bg-white" : "w-3 bg-white/40"
+            )}
+          />
+        ))}
       </div>
     </section>
   );
@@ -348,5 +348,32 @@ function TopCard({
       />
       <ScreenMedia src={screen.image} />
     </motion.div>
+  );
+}
+
+function NavArrow({
+  direction,
+  onClick,
+}: {
+  direction: "prev" | "next";
+  onClick: () => void;
+}) {
+  const Icon = direction === "prev" ? ChevronLeft : ChevronRight;
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={direction === "prev" ? "Previous screen" : "Next screen"}
+      className={cn(
+        "absolute top-1/2 -translate-y-1/2 z-30",
+        "flex items-center justify-center",
+        "h-[4vw] w-[4vw] rounded-full",
+        "bg-black/40 hover:bg-black/55 active:bg-black/70 backdrop-blur-md",
+        "text-white shadow-lg transition-colors",
+        direction === "prev" ? "left-4" : "right-4"
+      )}
+    >
+      <Icon className="h-[2vw] w-[2vw]" strokeWidth={2.25} />
+    </button>
   );
 }

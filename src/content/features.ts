@@ -9,7 +9,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
         title: "Growth Opportunities",
         body: "Identify high-propensity leads with next actions like Expansion, Retention, or Wallet Share.",
         side: "left",
-        y: 45,
+        y: 60,
       },
     },
     {
@@ -51,7 +51,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
         title: "Servicing Suggestions",
         body: "The risk score synthesizes a borrower's health and signs. When flagged, it matches concerns to suggestions for mitigation, restructuring, or secondary market moves.",
         side: "left",
-        y: 45,
+        y: 60,
       },
     },
     {
@@ -93,7 +93,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
         title: "Pre-approvals",
         body: "Real-time pre-approval for low-risk cases, isolating complex ones for review. Each result links to the rule with a confidence score.",
         side: "left",
-        y: 45,
+        y: 60,
       },
     },
     {
@@ -135,7 +135,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
         title: "Vulnerability Potentials",
         body: "The system uses borrower data to identify vulnerabilities and prompts underwriters with tests.",
         side: "left",
-        y: 45,
+        y: 60,
       },
     },
     {
