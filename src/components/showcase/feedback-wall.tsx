@@ -14,6 +14,25 @@ const LONG_PRESS_MS = 500;
 const DISPLAY_LIMIT = 9;
 const PIN_STORAGE_KEY = "feedback-wall-pinned";
 
+const IMPLEMENTED_QUOTES = [
+  "know what info to provide it to give me an actual memo start a document that an analyst can finish",
+  "see i import some data",
+  "like to see the system pushing the information into documentation software and then doc software push closed loan into the core",
+  "hyperlinks for traceability to supportind documents",
+  "risk rating here as well- recommended is a must have",
+  "every deal is different based on the deal structure and financial of borrower",
+  "Show the minimum amount of data they needed to provide to get a credit memo",
+  "Where is this data comming from?",
+  "I want to see the import data process here. How does the data make its way into the tool? How much work is it? Does it flow through directly?",
+  "Be able to search and see how any clients is doing based on their financials not just the ones pushed to the top here",
+  "Search and see how any client is doing based on their covenant monitoring",
+];
+
+const normalizeQuote = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+const IMPLEMENTED_SET = new Set(IMPLEMENTED_QUOTES.map(normalizeQuote));
+const isImplemented = (quote: string) =>
+  IMPLEMENTED_SET.has(normalizeQuote(quote));
+
 export function FeedbackWall({ items }: Props) {
   const [pinned, setPinned] = useState<Set<string>>(new Set());
   const [hydrated, setHydrated] = useState(false);
@@ -59,6 +78,7 @@ export function FeedbackWall({ items }: Props) {
             item={item}
             rotation={rotations[i % rotations.length]}
             isPinned={pinned.has(item.id)}
+            isImplemented={isImplemented(item.quote)}
             onTogglePin={() => togglePin(item.id)}
           />
         ))}
@@ -71,11 +91,13 @@ function Sticky({
   item,
   rotation,
   isPinned,
+  isImplemented,
   onTogglePin,
 }: {
   item: Feedback;
   rotation: number;
   isPinned: boolean;
+  isImplemented: boolean;
   onTogglePin: () => void;
 }) {
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -122,12 +144,58 @@ function Sticky({
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="h-full w-full flex flex-col p-[7cqi] gap-[4cqi]">
+      <div
+        className={`h-full w-full flex flex-col p-[7cqi] gap-[4cqi] transition-opacity ${
+          isImplemented ? "opacity-50" : ""
+        }`}
+      >
         <p className="text-[9.5cqi] leading-[1.15]">&ldquo;{item.quote}&rdquo;</p>
         <p className="text-[6cqi] mt-auto">
           {item.name}, {item.company}
         </p>
       </div>
+      <AnimatePresence>
+        {isImplemented && (
+          <motion.div
+            key="implemented"
+            initial={{ scale: 0.6, opacity: 0, rotate: 0 }}
+            animate={{ scale: 1, opacity: 1, rotate: -12 }}
+            exit={{ scale: 0.6, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 240, damping: 18, delay: 0.1 }}
+            className="absolute inset-0 flex items-center justify-center pointer-events-none"
+          >
+            <svg
+              viewBox="0 0 100 22"
+              preserveAspectRatio="xMidYMid meet"
+              className="w-[80cqi] text-sticky-foreground"
+            >
+              <rect
+                x="1"
+                y="1"
+                width="98"
+                height="20"
+                rx="2.5"
+                ry="2.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.4"
+              />
+              <text
+                x="50"
+                y="14.5"
+                textAnchor="middle"
+                fontFamily="var(--font-source-sans), ui-sans-serif, sans-serif"
+                fontWeight="700"
+                fontSize="11"
+                letterSpacing="1.5"
+                fill="currentColor"
+              >
+                IMPLEMENTED
+              </text>
+            </svg>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

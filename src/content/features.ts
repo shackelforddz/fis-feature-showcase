@@ -14,7 +14,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "pi-2",
-      image: "/features/portfolio-2.mp4",
+      image: "/features/portfolio-2-update.mp4",
       annotation: {
         title: "Lender's Co-pilot",
         body: "A unified intelligence layer that identifies high-growth clients missing key products.",
@@ -118,7 +118,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "le-4",
-      image: "/features/loan-4.mp4",
+      image: "/features/loan-4-update.mp4",
       annotation: {
         title: "AI Documents",
         body: "Relationship managers receive next steps for automated document creation.",
@@ -140,7 +140,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "sa-2",
-      image: "/features/scenario-2.mp4",
+      image: "/features/scenario-3-update.mp4",
       annotation: {
         title: "Visual Multi-Variate Scenario Analysis",
         body: "The system tests the loan's viability over multiple scenarios to produce recommendations.",
@@ -150,7 +150,7 @@ export const features: Record<CategoryId, FeatureScreen[]> = {
     },
     {
       id: "sa-3",
-      image: "/features/scenario-3.mp4",
+      image: "/features/scenario-4-update.mp4",
       annotation: {
         title: "AI Generated Documents",
         body: "Generate a risk-aligned credit memo from real-time borrower information.",
